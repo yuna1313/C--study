@@ -34,6 +34,14 @@ namespace AnimalShelter
             CusAddress.Text = cus.Address;
             CusDescription.Text = cus.Description;
             CusIsQualified.Text = cus.IsQualified.ToString();
+
+            CusPetInfo.Text = "";
+
+            foreach (Cat cat in cus.MyCats)
+                CusPetInfo.Text += cat.Name + ":" + cat.MakeSound() + Environment.NewLine;
+            
+            foreach(Dog dog in cus.MyDogs)
+                CusPetInfo.Text += dog.Name + ":" + dog.MakeSound() + Environment.NewLine;
         }
 
 
@@ -59,6 +67,19 @@ namespace AnimalShelter
             CusListPanel.Dock = DockStyle.Fill;
             CusDetailPanel.Dock = DockStyle.Right;
             CusNewPanel.Dock = DockStyle.Right;
+
+            Customer cus = new Customer("Ian", "Na", new DateTime(2000, 1, 2));
+            Cat cat = new Cat(1, "Lucas", "White", "Male");
+            cus.Adopt(cat);
+
+            Cat cat2 = new Cat(3, "Ruby", "Brown", "Female");
+            cus.Adopt(cat2);
+
+            Dog dog= new Dog(2, "Happy", "Black", "Male", DogBreed.Jindo);
+            cus.Adopt(dog);
+
+            Customers.Add(cus);
+            CusList.Rows.Add(cus.FirstName, cus.Age, cus.IsQualified);
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
