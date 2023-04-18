@@ -6,24 +6,15 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter
 {
-    public class Cat
+    public class Cat : Pet
     {
-        public int PatId;
-        public string Name;
-        public string Color;
-        public string Gender;
-        public string Description;
-
-
         public Cat(int petId, string name, string color, string gender)
+            : base(petId, name, color, gender)
         {
-            this.PatId = petId;
-            this.Name = name;
-            this.Color = color;
-            this.Gender = gender;
         }
 
-        public string MakeSound()
+        // 재정의 할 경우 override를 붙임
+        public override string MakeSound()
         {
             return "야옹";
         }

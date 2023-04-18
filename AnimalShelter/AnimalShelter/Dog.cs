@@ -8,25 +8,17 @@ namespace AnimalShelter
 {
     public enum DogBreed { Mixed, Bulldog, Jindo, Yorkshire }
 
-    public class Dog
+    public class Dog : Pet
     {
-        public int PedId;
-        public string Name;
-        public string Color;
-        public string Gender;
-        public string Description;
         public DogBreed Breed;
 
         public Dog(int petId, string name, string color, string gender, DogBreed breed)
+            : base(petId, name, color, gender)
         {
-            this.PedId = petId;
-            this.Name = name;
-            this.Color = color;
-            this.Gender = gender;
             this.Breed = breed;
         }
 
-        public string MakeSound()
+        public override string MakeSound()
         {
             return "멍멍";
         }
